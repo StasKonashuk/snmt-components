@@ -40,7 +40,7 @@ jobs:
 
           for package in $package_names do
               echo "Package name: $package"
-              folderName="$(echo "$package" | awk -F '-' '{print $2}')
+              folderName=$(echo "$package" | awk -F '-' '{print $2}')
               echo "Package name: $folderName"
               cd packages/$folderName
               npm run build-package
