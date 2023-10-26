@@ -35,12 +35,17 @@ jobs:
           changed_packages=$(npm run find-changed-packages)
           echo "Changed packages: $changed_packages"
 
+          IFS=$'\n'
           for package in $changed_packages; do
-            cd packages/$package
-            npm run build-package
-            npm run publish-package
-            git add .
-            git commit -m "Bump version for $package"
-            git push origin main
-            cd ../../
+            package=$(echo $package | tr -d '[:space:]')
+            echo "Changed package: $package"
+            if [ -n "$package" ]; then
+              cd packages/$package
+              npm run build-package
+              npm run publish-package
+              git add .
+              git commit -m "Bump version for $package"
+              git push origin main
+              cd ../../
+            fi
           done
