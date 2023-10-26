@@ -39,6 +39,7 @@ jobs:
 
 
           for package in $package_names do
+              echo "Package name: $package"
               folderName="${package#snmt-}"
               echo "Package name: $folderName"
               cd packages/$folderName
