@@ -37,10 +37,8 @@ jobs:
           package_names=($(echo $changed_packages | jq -r '.[].name'))
           echo "Changed packages: $package_names"
 
-          for package in $package_names"; do
-            package=$(echo $package | tr -d '[:space:]')
-            echo "Changed package: $package"
-            if [ -n "$package" ]; then
+          for package in "${package_names[@]}"; do
+            echo "Package name: $package"
               cd packages/$package
               npm run build-package
               npm run publish-package
@@ -48,5 +46,4 @@ jobs:
               git commit -m "Bump version for $package"
               git push origin main
               cd ../../
-            fi
           done
