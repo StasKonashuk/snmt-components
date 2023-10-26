@@ -38,8 +38,9 @@ jobs:
           echo "Changed packages: $package_names"
 
           for package in "${package_names[@]}"; do
-            echo "Package name: $package"
-              cd packages/$package
+              folderName="${package#snmt-}"
+              echo "Package name: $folderName"
+              cd packages/$folderName
               npm run build-package
               npm run publish-package
               git add .
