@@ -38,7 +38,7 @@ jobs:
           echo "Changed packages: $package_names"
 
 
-          for package in $package_names do
+          for package in $package_names; do
               echo "Package name: $package"
               folderName=$(echo "$package" | awk -F '-' '{print $2}')
               echo "Package name: $folderName"
