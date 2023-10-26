@@ -36,9 +36,9 @@ jobs:
           changed_packages=$(<changed-packages.json)
           package_names=($(echo $changed_packages | jq -r '.[].name'))
           echo "Changed packages: $package_names"
-          echo "Package names:${package_names[*]}"
 
-          for package in "${package_names[@]}"; do
+
+          for package in $package_names do
               folderName="${package#snmt-}"
               echo "Package name: $folderName"
               cd packages/$folderName
