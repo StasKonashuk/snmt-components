@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+*.log
+npm-debug.log*
+coverage/
+.vscode/
+.idea/
+package-lock.json
+Thumbs.db
+Desktop.ini
+.env

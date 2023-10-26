@@ -1,0 +1,8 @@
+# .npmignore
+!dist/
+src/
+tsconfig.json
+webpack.config.js
+.babelrc.json
+.storybook/
+package-lock.json

@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Farro&family=Mohave:wght@400;600;700&family=Montserrat:wght@700&family=Poppins:wght@400;500;600;700&family=Raleway&display=swap");
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.3s ease-out;
+}
+
+.button:disabled {
+  opacity: 0.7;
+}
+
+.primary-button {
+  background: #3366ff;
+  color: #fff;
+  border: none;
+}
+
+.primary-button:hover {
+  opacity: 0.7;
+  transition: all 0.3s ease-out;
+}
+
+.secondary-button {
+  background: #fff;
+  color: #3366ff;
+  border: 1px solid #3366ff;
+}
+
+.secondary-button:hover {
+  color: #fff;
+  background: #3366ff;
+  transition: all 0.3s ease-out;
+}
