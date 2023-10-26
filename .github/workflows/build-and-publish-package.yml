@@ -34,10 +34,10 @@ jobs:
         run: |
           npm run find-changed-packages
           changed_packages=$(<changed-packages.json)
-          echo "Changed packages: $changed_packages"
+          package_names=($(echo $changed_packages | jq -r '.[].name'))
+          echo "Changed packages: $package_names"
 
-          IFS=$'\n'
-          for package in $changed_packages; do
+          for package in $package_names"; do
             package=$(echo $package | tr -d '[:space:]')
             echo "Changed package: $package"
             if [ -n "$package" ]; then
