@@ -32,7 +32,7 @@ jobs:
 
       - name: Build and publish changed packages
         run: |
-          echo npm run find-changed-packages
+          npm run find-changed-packages
           changed_packages=$(<changed-packages.json)
           echo "Changed packages: $changed_packages"
 
