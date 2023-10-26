@@ -26,19 +26,15 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Find changed packages
-        id: find-changed-packages
-        run: |
-          changed_packages=$(npm run find-changed-packages)
-          echo "Changed packages: $changed_packages"
-
       - name: Log in to npm
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 
       - name: Build and publish changed packages
-        if: steps.find-changed-packages.outputs.changed_packages != '[]'
         run: |
+          changed_packages=$(npm run find-changed-packages)
+          echo "Changed packages: $changed_packages"
+
           for package in $(echo $changed_packages | jq -r '.[].name'); do
             cd packages/$package
             npm run build-package
