@@ -44,12 +44,8 @@ jobs:
               echo "Package name: $folderName"
               cd packages/$folderName
               npm run build-package
-              npm version patch
-              git add .
-              git commit -m "feat: Bump ${package} version to $(npm pkg get version)"
-              git push origin main
               cd ../../
           done
 
-          npx lerna publish from-package --yes
+          npx lerna publish patch --yes
           git push origin main
