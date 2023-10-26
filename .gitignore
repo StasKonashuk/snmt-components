@@ -10,3 +10,4 @@ package-lock.json
 Thumbs.db
 Desktop.ini
 .env
+changed-packages.json

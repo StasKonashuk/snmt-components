@@ -32,7 +32,8 @@ jobs:
 
       - name: Build and publish changed packages
         run: |
-          changed_packages=$(echo npm run find-changed-packages | sed -n '/\[/{:a;N;/\]$/!ba;s/.*\(\[.*\]\)/\1/p;}')
+          echo npm run find-changed-packages
+          changed_packages=$(<changed-packages.json)
           echo "Changed packages: $changed_packages"
 
           IFS=$'\n'
