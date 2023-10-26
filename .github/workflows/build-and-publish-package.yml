@@ -35,7 +35,7 @@ jobs:
           changed_packages=$(npm run find-changed-packages)
           echo "Changed packages: $changed_packages"
 
-          for package in $(echo $changed_packages); do
+          for package in $changed_packages; do
             cd packages/$package
             npm run build-package
             npm run publish-package
