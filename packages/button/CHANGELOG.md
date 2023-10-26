@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/StasKonashuk/snmt-components/compare/v0.0.6...v0.0.7) (2023-10-26)
+
+
+### Bug Fixes
+
+* Remove console.log ([57e619b](https://github.com/StasKonashuk/snmt-components/commit/57e619bececd55589d9f5ad2ffb88edac6fc0ab3))
+
+
+
+
+
 ## [0.0.6](https://github.com/StasKonashuk/snmt-components/compare/v0.0.5...v0.0.6) (2023-10-26)
 
 
