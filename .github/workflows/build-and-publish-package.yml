@@ -46,8 +46,8 @@ jobs:
             cd packages/$package
             npm run build-package
             npm run publish-package
-            git add package.json
+            git add .
             git commit -m "Bump version for $package"
-            git push
+            git push origin main
             cd ../../
           done
