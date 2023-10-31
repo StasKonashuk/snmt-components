@@ -32,12 +32,9 @@ jobs:
 
       - name: Build and publish changed packages
         run: |
-          changedFiles=$(git diff --name-only main...HEAD)
+          changedPackages=$(npm run find-changed-packages)
 
-          # Используйте awk, grep и sed для извлечения папок из списка измененных файлов
-          changedPackages=$(echo "$changedFiles" | awk -F/ '$1 == "packages" {print $2}' | sort -u)
-
-          echo "Changed packages: $changedPackages"
+          echo "$changedPackages"
 
           IFS=$'\n' read -ra packages <<< "$changedPackages"
 
