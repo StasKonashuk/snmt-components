@@ -34,13 +34,11 @@ jobs:
         run: |
           npm run find-changed-packages
 
-          changedPackages=$(cat changed-packages.json | jq -c '.')
+          changedPackages=$(cat changed-packages.json)
 
           echo "Chnaged-packages:$changedPackages"
 
-          IFS=$'\n' read -ra packages <<< "$changedPackages"
-
-          for package in "${packages[@]}"; do
+          for package in $(echo "$changedPackages" | jq -c '.[]'); do
               echo "package: $package"
               packageDir=$(echo "$package" | jq -r '.location')
               echo "packageDir: $changedPackages"
