@@ -6,7 +6,7 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "find-changed-packages": "npx lerna updated --include-merged-tags --json"
+    "find-changed-packages": "npx lerna changed --include-merged-tags --json"
   },
   "repository": {
     "type": "git",
