@@ -30,19 +30,23 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 
+      - name: Find changed packages
+        id: find-packages
+        run: |
+          # Используйте Lerna для поиска измененных пакетов
+          changedPackages=$(npm run find-changed-packages)
+          echo ::set-output name=changed-packages::"$changedPackages"
+        shell: bash
+
       - name: Build and publish changed packages
         run: |
-          npm run find-changed-packages
-          changed_packages=$(<changed-packages.json)
-          package_names=($(echo $changed_packages | jq -r '.[].name'))
-          echo "Changed packages: $package_names"
+          changedPackages="${{ steps.find-packages.outputs.changed-packages }}"
 
+          IFS=$'\n' read -ra packages <<< "$changedPackages"
 
-          for package in $package_names; do
-              echo "Package name: $package"
-              folderName=$(echo "$package" | awk -F '-' '{print $2}')
-              echo "Package name: $folderName"
-              cd packages/$folderName
+          for package in "${packages[@]}"; do
+              packageDir=$(echo "$package" | jq -r .location)
+              cd packages/$packageDir
               npm run build-package
               npm version patch
               git add .
