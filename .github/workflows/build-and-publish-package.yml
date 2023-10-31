@@ -40,9 +40,9 @@ jobs:
 
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
               echo "package: $package"
-              packageDir=$(echo "$package" | jq -r '.location')
-              echo "packageDir: $changedPackages"
-              cd packages/$packageDir
+              packageName=$(echo "$package" | jq -r .name)
+              echo "package: $packageName"
+              cd packages/$packageName
               npm run build-package
               npm version patch
               git add .
