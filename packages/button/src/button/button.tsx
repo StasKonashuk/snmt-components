@@ -63,6 +63,7 @@ const Button = (props: ButtonProps) => {
     setButtonClasses(newButtonClasses);
   }, [className, secondary]);
 
+  console.log("Button");
   return (
     <div className={wrapperClassName ? wrapperClassName : ""}>
       <button
