@@ -49,5 +49,5 @@ jobs:
               cd ../../
           done
 
-          npx lerna publish from-package --yes
+          npx lerna publish 'patch' --yes 
           git push origin main
