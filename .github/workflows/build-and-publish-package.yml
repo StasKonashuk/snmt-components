@@ -38,6 +38,8 @@ jobs:
 
           echo "Chnaged-packages:$changedPackages"
 
+          echo "Current directory: $GITHUB_WORKSPACE"
+
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
               echo "package: $package"
               packageName=$(echo "$package" | jq -r .name)
@@ -51,6 +53,8 @@ jobs:
               git push origin main
               cd ../../
           done
+
+          echo "Current directory: $GITHUB_WORKSPACE"
 
           npx lerna publish 'patch' --yes 
           git push origin main
