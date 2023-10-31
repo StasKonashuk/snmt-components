@@ -37,6 +37,8 @@ jobs:
           # Используйте awk, grep и sed для извлечения папок из списка измененных файлов
           changedPackages=$(echo "$changedFiles" | awk -F/ '{print $2}' | grep '^packages' | sed 's#/$##' | sort -u)
 
+          echo "Changed packages: $changedPackages"
+
           IFS=$'\n' read -ra packages <<< "$changedPackages"
 
           for package in "${packages[@]}"; do
