@@ -30,17 +30,12 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 
-      - name: Find changed packages
-        id: find-packages
-        run: |
-          # Используйте Lerna для поиска измененных пакетов
-          changedPackages=$(npm run find-changed-packages)
-          echo ::set-output name=changed-packages::"$changedPackages"
-        shell: bash
-
       - name: Build and publish changed packages
         run: |
-          changedPackages="${{ steps.find-packages.outputs.changed-packages }}"
+          changedFiles=$(git diff --name-only main...HEAD)
+
+          # Используйте awk, grep и sed для извлечения папок из списка измененных файлов
+          changedPackages=$(echo "$changedFiles" | awk -F/ '{print $2}' | grep '^packages' | sed 's#/$##' | sort -u)
 
           IFS=$'\n' read -ra packages <<< "$changedPackages"
 
