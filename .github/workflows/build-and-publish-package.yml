@@ -32,9 +32,8 @@ jobs:
 
       - name: Build and publish changed packages
         run: |
-          changedPackages=$(npm run find-changed-packages)
+          changedPackages=$(cat changed-packages.json)
 
-          changedPackages=${changedPackages#*> }
           echo "Chnaged-packages:$changedPackages"
 
           IFS=$'\n' read -ra packages <<< "$changedPackages"
