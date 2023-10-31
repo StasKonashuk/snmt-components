@@ -40,6 +40,7 @@ jobs:
 
           for package in "${packages[@]}"; do
               packageDir=$(echo "$package" | jq -r .location)
+              echo "packageDir: $changedPackages"
               cd packages/$packageDir
               npm run build-package
               npm version patch
