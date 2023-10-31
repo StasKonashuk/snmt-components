@@ -47,7 +47,7 @@ jobs:
               npm run build-package
               npm version patch
               git add .
-              git commit -m "feat: Bump ${package} version to $(npm pkg get version)"
+              git commit -m "feat: Bump ${packageName} version to $(npm pkg get version)"
               git push origin main
               cd ../../
           done
