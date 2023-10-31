@@ -41,6 +41,7 @@ jobs:
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
               echo "package: $package"
               packageName=$(echo "$package" | jq -r .name)
+              packageName=${packageName#snmt-}
               echo "package: $packageName"
               cd packages/$packageName
               npm run build-package
