@@ -35,7 +35,7 @@ jobs:
           changedPackages=$(npm run find-changed-packages)
 
           changedPackages=${changedPackages#*> }
-          echo "$changedPackages"
+          echo "Chnaged-packages:$changedPackages"
 
           IFS=$'\n' read -ra packages <<< "$changedPackages"
 
