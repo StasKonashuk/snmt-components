@@ -34,7 +34,7 @@ jobs:
         run: |
           npm run find-changed-packages
 
-          changedPackages=$(cat changed-packages.json)
+          changedPackages=$(cat changed-packages.json | jq -c '.')
 
           echo "Chnaged-packages:$changedPackages"
 
