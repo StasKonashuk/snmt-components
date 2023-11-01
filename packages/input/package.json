@@ -1,6 +1,6 @@
 {
   "name": "snmt-input",
-  "version": "0.0.44",
+  "version": "0.0.2",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {

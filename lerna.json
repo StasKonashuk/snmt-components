@@ -1,11 +1,15 @@
 {
-  "version": "0.0.1",
-  "packages": ["packages/*"],
+  "version": "0.0.2",
+  "packages": [
+    "packages/*"
+  ],
   "npmClient": "npm",
   "command": {
     "publish": {
       "skipPrompt": true,
-      "npmClientArgs": ["--legacy-peer-deps"]
+      "npmClientArgs": [
+        "--legacy-peer-deps"
+      ]
     }
   }
 }
