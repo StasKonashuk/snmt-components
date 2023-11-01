@@ -36,13 +36,14 @@ jobs:
         run: |
           changedPackages=$(cat changed-packages.json)
 
-          echo "Chnaged-packages:$changedPackages"
+          echo "Changed-packages:$changedPackages"
 
           git pull
 
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
               packageName=$(echo "$package" | jq -r .location | sed 's/\\/\//g')
               packageName=${packageName#snmt-}
+              echo "packageName:$packageName"
               cd packages/$packageName
               npm run build-package
               npm version patch
