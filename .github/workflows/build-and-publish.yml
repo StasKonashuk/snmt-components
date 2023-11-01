@@ -54,15 +54,3 @@ jobs:
         run: |
           npx lerna publish 'patch' --yes
           git push origin main
-
-          npm run find-changed-packages
-
-          changedPackages=$(cat changed-packages.json)
-
-          if [ -s changed-packages.json ]; then
-          echo "Файл не пустой"
-          # Добавьте здесь логику, которую нужно выполнить, если файл не пустой
-          else
-          echo "Файл пустой"
-          # Добавьте здесь логику, которую нужно выполнить, если файл пустой
-          fi
