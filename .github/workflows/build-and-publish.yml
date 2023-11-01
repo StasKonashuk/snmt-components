@@ -34,28 +34,29 @@ jobs:
 
       - name: Build changed packages
         run: |
+          npm run find-changed-packages
+
           changedPackages=$(cat changed-packages.json)
 
-          echo "Changed-packages:$changedPackages"
+          echo "Chnaged-packages:$changedPackages"
 
           git pull
 
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
-              echo "package:$package"
-              packageName=$(echo "$package" | jq -r '.name')
-              echo "packageName:$packageName"
+              packageName=$(echo "$package" | jq -r .name)
               packageName=${packageName#snmt-}
-              echo "packageName:$packageName"
               cd packages/$packageName
               npm run build-package
-              npm version patch
-              git add .
-              git commit -m "feat: Bump ${package} version to $(npm pkg get version)"
-              git push origin main
               cd ../../
           done
 
       - name: Publish changed packages
         run: |
-          npx lerna publish from-package --yes
+          npx lerna publish 'patch' --yes
           git push origin main
+
+          npm run find-changed-packages
+
+          changedPackages=$(cat changed-packages.json)
+
+          echo "Chnaged-packages:$changedPackages"
