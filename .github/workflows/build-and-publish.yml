@@ -41,7 +41,7 @@ jobs:
           git pull
 
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
-              packageName=$(echo "$package" | jq -r .name)
+              packageName=$(echo "$package" | jq -r .location | sed 's/\\/\//g')
               packageName=${packageName#snmt-}
               cd packages/$packageName
               npm run build-package
