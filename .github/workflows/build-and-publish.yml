@@ -59,4 +59,10 @@ jobs:
 
           changedPackages=$(cat changed-packages.json)
 
-          echo "Chnaged-packages:$changedPackages"
+          if [ -s changed-packages.json ]; then
+          echo "Файл не пустой"
+          # Добавьте здесь логику, которую нужно выполнить, если файл не пустой
+          else
+          echo "Файл пустой"
+          # Добавьте здесь логику, которую нужно выполнить, если файл пустой
+          fi
