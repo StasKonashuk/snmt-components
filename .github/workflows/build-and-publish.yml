@@ -20,8 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          rm -rf node_modules
-          rm package-lock.json
           npm install --legacy-peer-deps
           npm install -g lerna
 
@@ -34,7 +32,7 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 
-      - name: Build and publish changed packages
+      - name: Build changed packages
         run: |
           npx lerna clean --yes
 
@@ -44,15 +42,11 @@ jobs:
 
           echo "Chnaged-packages:$changedPackages"
 
-          echo "Current directory: $GITHUB_WORKSPACE"
-
           git pull
 
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
-              echo "package: $package"
               packageName=$(echo "$package" | jq -r .name)
               packageName=${packageName#snmt-}
-              echo "package: $packageName"
               cd packages/$packageName
               npm run build-package
               npm version patch
@@ -64,6 +58,4 @@ jobs:
           git push origin main
       - name: Publish changed packages
         run: |
-          echo "Current directory: $GITHUB_WORKSPACE"
-          npx lerna publish 'patch' --yes 
-          git push origin main
+          npx lerna publish 'patch' --yes
