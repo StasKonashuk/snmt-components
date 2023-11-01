@@ -37,7 +37,7 @@
     "css-loader": "^6.8.1",
     "dotenv": "^16.3.1",
     "lerna": "^7.4.1",
-    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.4.2",
