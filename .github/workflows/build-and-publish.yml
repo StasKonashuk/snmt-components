@@ -61,6 +61,8 @@ jobs:
               cd ../../
           done
 
+          git add .
+          git commit -m "fix"
           git push origin main
 
           echo "Current directory: $GITHUB_WORKSPACE"
