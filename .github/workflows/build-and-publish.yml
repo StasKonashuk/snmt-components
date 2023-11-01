@@ -20,6 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          rm -rf node_modules
+          rm package-lock.json
           npm ci --ignore-scripts
           npm install -g lerna
 
