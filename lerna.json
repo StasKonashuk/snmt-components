@@ -5,7 +5,8 @@
   "npmClient": "npm",
   "command": {
     "publish": {
-      "skipPrompt": true
+      "skipPrompt": true,
+      "npmClientArgs": ["--legacy-peer-deps"]
     }
   }
 }
