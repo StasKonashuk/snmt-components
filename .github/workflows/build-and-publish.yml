@@ -34,8 +34,6 @@ jobs:
 
       - name: Build changed packages
         run: |
-          npx lerna clean --yes
-
           npm run find-changed-packages
 
           changedPackages=$(cat changed-packages.json)
