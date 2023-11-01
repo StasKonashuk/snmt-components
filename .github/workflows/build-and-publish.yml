@@ -36,7 +36,7 @@ jobs:
 
       - name: Build and publish changed packages
         run: |
-          npx lerna clean 'patch' --yes
+          npx lerna clean --yes
 
           npm run find-changed-packages
 
