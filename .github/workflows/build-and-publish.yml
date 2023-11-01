@@ -61,11 +61,9 @@ jobs:
               cd ../../
           done
 
-          git add .
-          git commit -m "fix"
           git push origin main
-
+      - name: Publish changed packages
+        run: |
           echo "Current directory: $GITHUB_WORKSPACE"
-
           npx lerna publish 'patch' --yes 
           git push origin main
