@@ -9,3 +9,4 @@ coverage/
 Thumbs.db
 Desktop.ini
 .env
+changed-packages.json
