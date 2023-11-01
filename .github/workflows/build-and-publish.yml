@@ -1,4 +1,4 @@
-name: "Build and push package"
+name: "Build and publish package"
 
 on:
   workflow_dispatch:
@@ -54,11 +54,10 @@ jobs:
               npm version patch
               git add .
               git commit -m "feat: Bump ${packageName} version to $(npm pkg get version)"
-             
               cd ../../
           done
 
-          git push -f origin main
+          git push origin main
 
           echo "Current directory: $GITHUB_WORKSPACE"
 
