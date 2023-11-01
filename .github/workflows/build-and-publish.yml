@@ -41,6 +41,7 @@ jobs:
           git pull
 
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
+              echo "package:$package"
               packageName=$(echo "$package" | jq -r .location | sed 's/\\/\//g')
               packageName=${packageName#snmt-}
               echo "packageName:$packageName"
