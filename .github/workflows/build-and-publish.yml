@@ -34,8 +34,6 @@ jobs:
 
       - name: Build changed packages
         run: |
-          npm run find-changed-packages
-
           changedPackages=$(cat changed-packages.json)
 
           echo "Chnaged-packages:$changedPackages"
@@ -47,13 +45,10 @@ jobs:
               packageName=${packageName#snmt-}
               cd packages/$packageName
               npm run build-package
-              npm version patch
-              git add .
-              git commit -m "feat: Bump ${packageName} version to $(npm pkg get version)"
               cd ../../
           done
 
-          git push origin main
       - name: Publish changed packages
         run: |
           npx lerna publish 'patch' --yes
+          git push origin main
