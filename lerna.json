@@ -8,5 +8,12 @@
       "skipPrompt": true,
       "npmClientArgs": ["--legacy-peer-deps"]
     }
-  }
+  },
+  "ignoreChanges": [
+    "**/CHANGELOG.md",
+    "**/node_modules/**",
+    "**/package.json",
+    "**/*.md",
+    "**/perf/**"
+  ]
 }
