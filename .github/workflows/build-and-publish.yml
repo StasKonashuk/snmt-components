@@ -45,10 +45,14 @@ jobs:
               packageName=${packageName#snmt-}
               cd packages/$packageName
               npm run build-package
+              npm version patch
+              git add .
+              git commit -m "feat: Bump ${package} version to $(npm pkg get version)"
+              git push origin main
               cd ../../
           done
 
       - name: Publish changed packages
         run: |
-          npx lerna publish 'patch' --yes
+          npx lerna publish from-package --yes
           git push origin main
