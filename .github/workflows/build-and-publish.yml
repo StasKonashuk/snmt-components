@@ -42,7 +42,8 @@ jobs:
 
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
               echo "package:$package"
-              packageName=$(echo "$package" | jq -r .location | sed 's/\\/\//g')
+              packageName=$(echo "$package" | jq -r '.name'")
+              echo "packageName:$packageName"
               packageName=${packageName#snmt-}
               echo "packageName:$packageName"
               cd packages/$packageName
