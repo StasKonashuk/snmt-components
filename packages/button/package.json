@@ -1,6 +1,6 @@
 {
   "name": "snmt-button",
-  "version": "0.0.52",
+  "version": "0.0.53",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
