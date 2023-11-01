@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install --force
-          npm install lerna -g
+          npm install -g lerna
 
       - name: Setup git config
         run: |
