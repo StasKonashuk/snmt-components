@@ -34,8 +34,6 @@ jobs:
 
       - name: Build changed packages
         run: |
-          npm run find-changed-packages
-
           changedPackages=$(cat changed-packages.json)
 
           echo "Chnaged-packages:$changedPackages"
