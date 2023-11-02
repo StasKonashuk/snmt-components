@@ -37,7 +37,15 @@ jobs:
 
           npm run find-changed-packages
 
-          changedPackages=$(cat changed-packages.json)
+          echo "Run" 
+
+          if [ -s changed-packages.json ]; then
+            echo "True"  
+            changedPackages=$(cat changed-packages.json)
+          else
+            echo "False"  
+            changedPackages="[]"
+          fi
 
           echo "Chnaged-packages:$changedPackages"
 
