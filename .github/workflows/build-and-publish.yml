@@ -38,15 +38,7 @@ jobs:
 
       - name: Build changed packages
         run: |
-          if [ -f changed-packages.json ]; then
-            if [ -s changed-packages.json ]; then
-            changedPackages=$(< changed-packages.json)
-            else
-            changedPackages="[]"
-            fi
-          else
-            changedPackages="[]"
-          fi
+          changedPackages=$(cat changed-packages.json)
 
           echo "Chnaged-packages:$changedPackages"
 
