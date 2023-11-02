@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { getNewStyles } from "../../../../utils";
 
 import "./button.css";
 
-interface ButtonProps {
-  value: string;
+export interface ButtonProps {
+  value?: string;
   type?: "button" | "submit" | "reset";
   className?: string;
   wrapperClassName?: string;
@@ -14,6 +15,7 @@ interface ButtonProps {
   color?: string;
   fullWidth?: boolean;
   onClick?: () => void;
+  children?: any;
 }
 
 const Button = (props: ButtonProps) => {
@@ -29,20 +31,20 @@ const Button = (props: ButtonProps) => {
     color,
     onClick,
     fullWidth,
+    children,
     ...otherProps
   } = props;
   const [rootStyles, setRootStyles] = useState<React.CSSProperties>({});
   const [buttonClasses, setButtonClasses] = useState(["button"]);
 
   useEffect(() => {
-    const newStyles: React.CSSProperties = { ...rootStyles };
-    if (borderRadius) newStyles.borderRadius = borderRadius;
-
-    if (fullWidth) newStyles.width = "100%";
-
-    if (backgroundColor) newStyles.background = `${backgroundColor}`;
-
-    if (color) newStyles.color = `${color}`;
+    const newStyles: React.CSSProperties = getNewStyles({
+      ...rootStyles,
+      borderRadius,
+      fullWidth,
+      backgroundColor,
+      color,
+    });
 
     setRootStyles(newStyles);
   }, [borderRadius, fullWidth, backgroundColor, color]);
@@ -60,6 +62,10 @@ const Button = (props: ButtonProps) => {
       newButtonClasses.push("primary-button");
     }
 
+    if (className) {
+      newButtonClasses.push(className);
+    }
+
     setButtonClasses(newButtonClasses);
   }, [className, secondary]);
 
@@ -73,7 +79,7 @@ const Button = (props: ButtonProps) => {
         type={type}
         {...otherProps}
       >
-        {value}
+        {value ? value : children}
       </button>
     </div>
   );

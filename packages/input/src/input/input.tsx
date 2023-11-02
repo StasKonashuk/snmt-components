@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 ("use strict");
+import { getNewStyles } from "../../../../utils";
 
 import "./input.css";
 
@@ -132,23 +133,14 @@ const Input = (props: InputProps) => {
   }, [className, secondary, isError]);
 
   useEffect(() => {
-    if (borderRadius) {
-      setRootStyles((prev) => {
-        return { ...prev, borderRadius };
-      });
-    }
+    const newStyles = getNewStyles({
+      ...rootStyles,
+      borderRadius,
+      width,
+      height,
+    });
 
-    if (width) {
-      setRootStyles((prev) => {
-        return { ...prev, width };
-      });
-    }
-
-    if (height) {
-      setRootStyles((prev) => {
-        return { ...prev, height };
-      });
-    }
+    setRootStyles(newStyles);
   }, [borderRadius, width, height]);
 
   useEffect(() => {
