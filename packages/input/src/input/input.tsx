@@ -195,8 +195,6 @@ const Input = (props: InputProps) => {
     }
   };
 
-  console.log("input");
-
   return (
     <div className={wrapperClasses.join(" ")}>
       {name && (
