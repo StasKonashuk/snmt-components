@@ -20,8 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install --legacy-peer-deps
-          npm install -g lerna
+          npm install
 
       - name: Setup git config
         run: |
