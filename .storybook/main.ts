@@ -20,12 +20,11 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   webpackFinal: async (storybookWebpackConfig) => {
-    storybookWebpackConfig.resolve?.modules.pop();
-    storybookWebpackConfig.resolve?.modules.pop();
-
-    storybookWebpackConfig.resolve?.modules.unshift(
-      path.resolve(__dirname, "../node_modules")
-    );
+    if (storybookWebpackConfig.resolve?.modules) {
+      storybookWebpackConfig.resolve.modules.unshift(
+        path.resolve(__dirname, "../node_modules")
+      );
+    }
 
     return storybookWebpackConfig;
   },

@@ -18,6 +18,9 @@ type Story = StoryObj<typeof meta>;
 export const DefaultInput: Story = {
   args: {
     value: "Default Input",
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
@@ -25,12 +28,18 @@ export const SecondaryInput: Story = {
   args: {
     value: "Secondary Input",
     secondary: true,
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
 export const PrimaryInput: Story = {
   args: {
     value: "Primary Input",
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
@@ -38,6 +47,9 @@ export const DisabledInput: Story = {
   args: {
     value: "Disabled Input",
     disabled: true,
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
@@ -45,6 +57,9 @@ export const RoundedInput: Story = {
   args: {
     value: "Rounded Input",
     borderRadius: "8px",
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
@@ -53,6 +68,9 @@ export const ErrorInput: Story = {
     value: "Input with Error",
     isError: true,
     errorMsg: "Something wrong",
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
@@ -60,6 +78,9 @@ export const InputWithPlaceholder: Story = {
   args: {
     value: "",
     placeholder: "Placeholder value",
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
@@ -68,6 +89,9 @@ export const InputWithLabel: Story = {
     value: "",
     name: "Label name",
     borderRadius: "8px",
+    onChange: () => {
+      return "Value";
+    },
   },
 };
 
@@ -76,5 +100,8 @@ export const MultilineInput: Story = {
     value: "MultiLine Input",
     multiline: true,
     name: "Surname",
+    onChange: () => {
+      return "Value";
+    },
   },
 };
