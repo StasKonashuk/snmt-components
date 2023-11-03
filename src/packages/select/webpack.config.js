@@ -3,6 +3,7 @@ require("dotenv").config();
 const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const FileManagerPlugin = require("filemanager-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
@@ -25,7 +26,40 @@ const optimization = () => {
 };
 
 const plugins = () => {
-  const base = [new CleanWebpackPlugin()];
+  const base = [
+    new CleanWebpackPlugin(),
+    new FileManagerPlugin({
+      events: {
+        onEnd: {
+          move: [
+            {
+              source: path.resolve(
+                __dirname,
+                "dist",
+                "packages",
+                "select",
+                "src",
+                "select"
+              ),
+              destination: path.resolve(__dirname, "dist", "select"),
+            },
+            {
+              source: path.resolve(
+                __dirname,
+                "dist",
+                "packages",
+                "select",
+                "src",
+                "index.d.ts"
+              ),
+              destination: path.resolve(__dirname, "dist", "index.d.ts"),
+            },
+          ],
+          delete: [path.resolve(__dirname, "dist", "packages")],
+        },
+      },
+    }),
+  ];
 
   return base;
 };
