@@ -1,5 +1,3 @@
-import React from "react";
-
 export const getNewStyles = (styles: any) => {
   const newStyles: any = {};
 
