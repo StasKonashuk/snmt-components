@@ -42,11 +42,13 @@ jobs:
 
           echo "Chnaged-packages:$changedPackages"
 
+          cd src
+
           for package in $(echo "$changedPackages" | jq -c '.[]'); do
               packageName=$(echo "$package" | jq -r .name)
               packageName=${packageName#snmt-}
               echo "packageName:$packageName"
-              cd src/packages/$packageName
+              cd packages/$packageName
               npm run build-package
               cd ../../
           done
