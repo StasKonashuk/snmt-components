@@ -8,8 +8,11 @@
     "lib": ["es2015", "dom"],
     "outDir": "./dist/",
     "sourceMap": true,
-    "declaration": true
+    "rootDir": "../../",
+    "declaration": true,
+    "baseUrl": "."
   },
-  "include": ["src"],
+
+  "include": ["./src", "../../index.ts"],
   "exclude": ["node_modules"]
 }

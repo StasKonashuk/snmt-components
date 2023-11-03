@@ -11,6 +11,6 @@
     "sourceMap": true,
     "declaration": true
   },
-  "include": ["packages/**/src"],
-  "exclude": ["node_modules", "packages/**/node_modules"]
+  "include": ["src/packages/**/src", "src/utils"],
+  "exclude": ["node_modules", "src/packages/**/node_modules"]
 }
