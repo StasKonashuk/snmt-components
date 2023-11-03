@@ -22,6 +22,7 @@
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "snmt-button": "^0.0.103",
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.4.4",
