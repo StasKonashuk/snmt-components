@@ -56,5 +56,7 @@ jobs:
 
       - name: Publish changed packages
         run: |
+          git add .
+          git commit -m "feat: Update packages"
           npx lerna publish 'patch' --yes
           git push origin main
