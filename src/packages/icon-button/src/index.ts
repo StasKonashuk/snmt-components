@@ -1,1 +1,3 @@
-export { default as IconButton } from "./icon-button/icon-button";
+import { IconButton } from "./icon-button";
+
+export { IconButton };

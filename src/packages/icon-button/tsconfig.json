@@ -10,6 +10,6 @@
     "sourceMap": true,
     "declaration": true
   },
-  "include": ["src", "src/index.ts"],
+  "include": ["src", "src/icon-button/index.ts"],
   "exclude": ["node_modules"]
 }
