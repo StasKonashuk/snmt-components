@@ -49,6 +49,7 @@ jobs:
               packageName=${packageName#snmt-}
               echo "packageName:$packageName"
               cd packages/$packageName
+              npm install --legacy-peer-deps
               npm run build-package
               cd ../../
           done
